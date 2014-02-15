@@ -1,4 +1,130 @@
 /** @jsx React.DOM */
+var DisplayPanel = React.createClass({
+	render: function() {
+		return (<li>Display On</li>);
+	}
+});
+
+var PlayerPanel = React.createClass({
+	render: function() {
+		var _ = this.props.data
+		var classActived = 'glyphicon glyphicon-play ';
+		var text = ' Off'//default text
+		if (typeof _ !== 'undefined') {
+			if(_.active != 'false' ){
+				classActived += 'remotePanel'
+				text = ' ' + _.category // text if activated
+			}
+		}
+		return (<li><span className={classActived}> {text}</span></li>);
+	}
+});
+
+
+var BrowserPanel = React.createClass({
+	render: function() {
+		var _ = this.props.data
+		var classActived = ' glyphicon glyphicon-cloud ';
+		var text = ' '//default text
+		if (typeof _ !== 'undefined') {
+			if(_.active != 'false' ){
+				classActived += 'remotePanel label-green'
+				text = ' ' + _.category // text if activated
+			}
+		}
+		return (<li><span className={classActived}> {text}</span></li>);
+	}
+});
+
+var ImagePanel = React.createClass({
+	render: function() {
+		var _ = this.props.data
+		var classActived = ' glyphicon glyphicon-picture ';
+		var text = ' '//default text
+		if (typeof _ !== 'undefined') {
+			if(_.active != 'false' ){
+				classActived += 'remotePanel label-green'
+				text = 'On' // text if activated
+			}
+		}
+		return (<li><span className={classActived}>{text}</span></li>);
+	}
+});
+
+var RadioPanel = React.createClass({
+	render: function() {
+		return (<li>Player On</li>);
+	}
+});
+
+var QueuePanel = React.createClass({
+	render: function() {
+		var _ = this.props
+		var classActived = ' glyphicon glyphicon-refresh ';
+		var text = ' '//default text
+		if (typeof _ !== 'undefined') {
+			if(_.active != 'false' ){
+				classActived += 'remotePanel'
+				text = ' ' // text if activated
+			}
+		}
+		return (<li><span className={classActived}> {text}</span></li>);
+	}
+});
+
+var SoundPanel = React.createClass({
+	render: function() {
+		var _ = this.props.data
+		if (typeof _ !== 'undefined') {
+
+			// mute bug ?
+			if (_.mute !== 'true') {
+				var classActived = 'glyphicon glyphicon-volume-off'
+			}
+			return (<li className={classActived +' remotePanel '}> Vol :
+				<span className= {'glyphicon glyphicon-minus'}> </span>
+				<span> { ' ' + _.volume + '% '} </span>
+				<span className= {'glyphicon glyphicon-plus'}></span>
+				</li>);
+		}
+		return (<li> <span className= {classActived}> loading </span> </li>);
+	}
+});
+
+var AnimationPanel = React.createClass({
+	// gif
+	render: function() {
+		return (<li>No GIF </li>);
+	}
+});
+
+/*
+append to activate panel
+
+<DisplayPanel data = {_.display} />
+<RadioPanel data = {_.radio} />
+
+*/
+
+
+var RemotePanel = React.createClass({
+	render: function() {
+		var _ = this.props.data;
+		return (<nav className="remote-botton-fixed">
+			<ul className="list-inline">
+	      <QueuePanel data = {_.queue} />
+				<PlayerPanel data = {_.player} />
+	      <BrowserPanel data = {_.browser} />
+	      <ImagePanel data = {_.image} />
+	      <AnimationPanel data = {_.animation} />
+	      <SoundPanel data = {_.sound} />
+	   	</ul>
+			</nav>);
+	}
+});
+
+
+
 var YouTubeThumbnail = React.createClass({
   render: function() {
     var cssStyle = {
@@ -40,7 +166,7 @@ var MediaItem = React.createClass({
   }
 });
 
-var MediaList = React.createClass({
+var Playlist = React.createClass({
   render: function() {
     var _ = this.props.data;
     if (typeof _ !== 'undefined') {
@@ -53,14 +179,14 @@ var MediaList = React.createClass({
             source={item.source}
             title={item.title} />);
       });
-      return (<div>{mediaItems}</div>);
+      return (<div className="video padding-top padding-bottom padding-right" >{mediaItems}</div>);
     }else{
       return (<p>loading</p>);
     }
   }
 });
 
-var Playlist = React.createClass({
+var Screeninvader = React.createClass({
   loadCommentsFromServer: function() {
     $.ajax({
       url: this.props.url,
@@ -77,14 +203,16 @@ var Playlist = React.createClass({
     setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function() {
+  	var _ = this.state.data
     return (
-      <div className="video padding-top padding-bottom padding-right">
-          <MediaList data={this.state.data.playlist} />
+      <div>
+	      <Playlist data={_.playlist} />
+	      <RemotePanel data={this.state.data}/>
       </div>
     );
   }
 });
 
 React.renderComponent(
-  <Playlist   url="http://localhost:5555/cgi-bin/get?/." pollInterval={500} />, document.getElementById('playlist')
-);
+	<Screeninvader url="http://localhost:5555/cgi-bin/get?/."
+	pollInterval={500} />, document.getElementById('playlist'));

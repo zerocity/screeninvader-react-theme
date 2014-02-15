@@ -16,9 +16,12 @@
     <div class="container">
         <header>
 					<ul>
-						<li><a href="#">Search</a></li>
-						<li><a href="#">Playlist</a></li>
-						<li>Playlist</li>
+						<li><a href="#">
+							<span class="label label-green"> Search</a> </span>
+						</li>
+						<li><a href="#">
+							<span class="label label-green"> Playlist</a> </span>
+						</li>
 						<li>
 						<a href="javascript:(function(){ window.open('http://{{getIP}}/api/url/h' + encodeURIComponent(location.href)); })();" onclick="return false" style="cursor:default;">
             	<span class="label label-default">Screeninvader Bookmarklet</span>
@@ -26,17 +29,13 @@
 					</ul>
         </header>
 
-        <div class="main padding-left ">
+        <div class="main padding-left playlist">
             <div class="row">
                 <div id="playlist">
 
                 </div>
             </div>
         </div>
-
-        <nav class="remote-botton-fixed" >
-            <p>remote</p>
-        </nav>
 
         <footer>
             <p>Coded @ Metalab</p>
