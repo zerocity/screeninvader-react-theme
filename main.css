@@ -19,6 +19,19 @@ header{
 	border-top: 5px solid #41B436;
 	box-shadow: inset 0 3px 30px rgba(0,0,0,.3);
 	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	height: 50px;
+	top: 0px;
+	right: 0;
+	left: 0;
+	margin-top: 0;
+	margin-bottom: 50px;
+	border-width: 3px 0 0;
+	z-index: 1030;
+	padding: 5px;
+	position: fixed;
+}
+.main {
+	margin-top: 60px;
 }
 
 .label-green {
@@ -78,8 +91,7 @@ header ul li{
 	text-align: center;
 }
 
-
-.btn-ttc,
+.btn-ttc
 .btn-ttc:hover,
 .btn-ttc:active {
 	color: white;
@@ -160,5 +172,3 @@ h5.bottom{
 	background: #363636;
 	overflow-x: hidden;
 }
-
-

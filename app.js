@@ -6,8 +6,30 @@ var DisplayPanel = React.createClass({
 });
 
 var PlayerPanel = React.createClass({
+	getInitialState : function() {
+    return {title: []};
+	},
+	getYoutubeData : function() {
+		//http://gdata.youtube.com/feeds/api/videos/Yx6-ZBOJYDg?v=2&alt=jsonc
+		var _ = this.props.data
+		if (typeof _ !== 'undefined') {
+			var _ = _.url.split('v=')[1];
+			var YotubeApi = 'http://gdata.youtube.com/feeds/api/videos/'+_+'?v=2&alt=jsonc'
+				$.ajax({
+	      url: YotubeApi,
+	      success: function(json) {
+	      	console.log(json.data.title);
+					this.setState({title: json.data.title});
+	      }.bind(this)
+			});
+		}
+	}	,
+  componentWillMount: function() {
+    setTimeout(this.getYoutubeData,2000);
+  },
 	render: function() {
 		var _ = this.props.data
+		//var test = this.getYoutubeData();
 		var classActived = 'glyphicon glyphicon-play ';
 		var text = ' Off'//default text
 		if (typeof _ !== 'undefined') {
@@ -76,7 +98,6 @@ var SoundPanel = React.createClass({
 	render: function() {
 		var _ = this.props.data
 		if (typeof _ !== 'undefined') {
-
 			// mute bug ?
 			if (_.mute !== 'true') {
 				var classActived = 'glyphicon glyphicon-volume-off'
@@ -103,9 +124,9 @@ append to activate panel
 
 <DisplayPanel data = {_.display} />
 <RadioPanel data = {_.radio} />
+<AnimationPanel data = {_.animation} />
 
 */
-
 
 var RemotePanel = React.createClass({
 	render: function() {
@@ -114,16 +135,13 @@ var RemotePanel = React.createClass({
 			<ul className="list-inline">
 	      <QueuePanel data = {_.queue} />
 				<PlayerPanel data = {_.player} />
-	      <BrowserPanel data = {_.browser} />
-	      <ImagePanel data = {_.image} />
-	      <AnimationPanel data = {_.animation} />
 	      <SoundPanel data = {_.sound} />
+	      <ImagePanel data = {_.image} />
+	      <BrowserPanel data = {_.browser} />
 	   	</ul>
 			</nav>);
 	}
 });
-
-
 
 var YouTubeThumbnail = React.createClass({
   render: function() {
