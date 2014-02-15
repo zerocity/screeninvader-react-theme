@@ -1,0 +1,146 @@
+body{
+	font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #7E7E7E;
+	background: #1E1E1E;
+	overflow-x: hidden;
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	height: 100%;
+}
+
+footer{
+	padding-left: 5px;
+}
+
+header{
+	padding-top: 10px;
+	border-top: 5px solid #41B436;
+	box-shadow: inset 0 3px 30px rgba(0,0,0,.3);
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+.remote-botton-fixed {
+	height: 50px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin-bottom: 0;
+	border-width: 1px 0 0;
+	z-index: 1030;
+	border-top: 1px solid #41B436;
+	box-shadow: inset 0 3px 30px rgba(0,0,0,.3);
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	padding: 5px;
+}
+
+header .container {
+	padding: 0px;
+}
+
+a {
+	color: #7E7E7E;
+}
+
+.container{
+	padding: 0px;
+}
+
+header ul {
+	padding-left: 0px;
+	padding-bottom: 10px;
+}
+
+header ul li{
+	list-style: none;
+	display: inline;
+	padding: 0px 15px;
+}
+
+
+
+.btn-ttc,
+.btn-ttc:hover,
+.btn-ttc:active {
+	color: white;
+	border-color: #6E726E;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #474746;
+}
+
+.padding-top{
+	padding-top: 5px;
+}
+
+.isPlaying{
+	background-color: #F5ED35;
+}
+
+.media-ttc{
+	border-radius: 3px;
+	border: 0.1px;
+	border-color: #4E4E4E;
+}
+
+.media-object {
+	width: 64px;
+	height: 64px;
+}
+
+.media-ttc:hover{
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #EDF7EC;
+	border-radius: 3px;
+}
+
+.padding-bottom{
+	padding-bottom: 20px;
+}
+
+.padding-left{
+	padding-left: 20px;
+}
+
+.padding-right{
+	padding-right: 20px;
+}
+
+.volslider{
+	padding: 10px;
+	margin: 5px;
+	height: 75px;
+}
+
+.margin-right{
+	margin-right: 15px;
+}
+
+.video{
+	display: block;
+}
+
+.progress{
+	width: 100%;
+	height: 30px;
+}
+
+
+
+h5.bottom{
+	margin-top: 3px;
+	margin-bottom: 0px;
+}
+
+.navbar-fixed-ttc{
+	font-family: Calibri,Tahoma,"Lucida Sans Unicode","Lucida Grande",verdana,sans,Arial,geneva,sans-serif;
+	font-size: 14px;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #7E7E7E;
+	background: #363636;
+	overflow-x: hidden;
+}
+
+

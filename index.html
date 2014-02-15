@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://fb.me/react-0.8.0.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.8.0.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+					<ul>
+						<li><a href="#">Search</a></li>
+						<li><a href="#">Playlist</a></li>
+						<li>Playlist</li>
+						<li>
+						<a href="javascript:(function(){ window.open('http://{{getIP}}/api/url/h' + encodeURIComponent(location.href)); })();" onclick="return false" style="cursor:default;">
+            	<span class="label label-default">Screeninvader Bookmarklet</span>
+            </a></li>
+					</ul>
+        </header>
+
+        <div class="main padding-left ">
+            <div class="row">
+                <div id="playlist">
+
+                </div>
+            </div>
+        </div>
+
+        <nav class="remote-botton-fixed" >
+            <p>remote</p>
+        </nav>
+
+        <footer>
+            <p>Coded @ Metalab</p>
+        </footer>
+
+    </div>
+    <script type="text/jsx" src="app.js"></script>
+</body>
+
+</html>
