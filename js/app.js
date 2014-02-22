@@ -158,6 +158,7 @@ var Screeninvader = React.createClass({
     return (
       <div className={className}>
 	      <Playlist data={_.playlist} />
+	      <RemotePanel data={_}/>
       </div>
     );
   }
@@ -185,7 +186,7 @@ var Router = Backbone.Router.extend({
   routes : {
   	""		: "invader",
     "search" : "youtubesearch",
-    "bar" : "bar"
+    "playlist" : "invader"
   },
 
   invader : function() {
