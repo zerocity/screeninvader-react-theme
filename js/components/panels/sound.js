@@ -7,7 +7,7 @@ var SoundPanel = React.createClass({
 		var _ = this.props.data
 		if (typeof _ !== 'undefined') {
 			// mute bug ?
-			if (_.mute !== 'true') {
+			if (_.mute === 'true') {
 				var classActived = 'glyphicon glyphicon-volume-off'
 			}
 			return (<li className={classActived +' remotePanel '}> Vol :

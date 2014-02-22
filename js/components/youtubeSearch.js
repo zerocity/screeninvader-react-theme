@@ -53,7 +53,7 @@ var YoutubeSearch = React.createClass({
     var query =  $('#youtubeQuery').val();
     this.youtubeAPI(query)
   },
-  render: function SearchResultson() {
+  render: function () {
     var data = this.state.data
     return (
       <div>

@@ -1,6 +1,11 @@
 /** @jsx React.DOM */
-define(['react','backbone','jsx!components/remotepanel','jsx!components/youtubeSearch','jsx!components/items'],
-	function(React,Backbone,RemotePanel,searchComponent,MediaItem) {
+define(['react',
+				'backbone',
+				'jsx!components/remotepanel',
+				'jsx!components/youtubeSearch',
+				'jsx!components/urlSearch',
+				'jsx!components/items'],
+				function(React,Backbone,RemotePanel,searchComponent,urlSearch,MediaItem) {
 
 
 /*
@@ -15,11 +20,6 @@ define(['react','backbone','jsx!components/remotepanel','jsx!components/youtubeS
 
 var YoutubeSearch = React.createClass({
   mixins : [RouterMixin],
-  handle : function() {
-    this.props.router.navigate("bar", {
-      trigger : true
-    });
-  },
   render : function() {
 
     var className = "hide";
@@ -36,25 +36,19 @@ var YoutubeSearch = React.createClass({
   }
 });
 
-var BarComponent = React.createClass({
+var UrlSearch = React.createClass({
   mixins : [RouterMixin],
-  handle : function() {
-    this.props.router.navigate("foo", {
-      trigger : true
-    });
-  },
   render : function() {
 
     var className = "hide";
 
-    if (this.props.router.current == "bar") {
+    if (this.props.router.current == "urlSearch") {
       className = "show";
     }
 
     return (
       <div className={className}>
-        in bar,
-        <a onClick={this.handle}>go to foo</a>
+      	<urlSearch router={router}/>
       </div>
     );
   }
@@ -146,6 +140,7 @@ var Router = Backbone.Router.extend({
   routes : {
   	""		: "invader",
     "search" : "youtubesearch",
+    "urlSearch":"urlSearch",
     "playlist" : "invader"
   },
 
@@ -157,8 +152,8 @@ var Router = Backbone.Router.extend({
     this.current = "youtubesearch";
   },
 
-  bar : function() {
-    this.current = "bar";
+  urlSearch : function() {
+    this.current = "urlSearch";
   }
 });
 var router = new Router();
@@ -177,7 +172,7 @@ var InterfaceComponent = React.createClass({
           var router = this.props.router;
           return (<div>
               <YoutubeSearch router={router} />
-              <BarComponent router={router} />
+              <UrlSearch router={router} />
               <Screeninvader
               url="/cgi-bin/get?/."
               pollInterval={5000} router={router}/>
