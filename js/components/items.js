@@ -18,12 +18,15 @@ define(['react'], function(React) {
 	})
 
 	var MediaItem = React.createClass({
-	  handleClick: function(event) {
+	  handleClick: function() {
 	    $.get('/cgi-bin/playlist_jump?'+this.props.key);
 	  },
 	  addItem:function(){
 	  	console.log(this.props.source);
 	  	$.get('/cgi-bin/show?'+this.props.source)
+	  },
+	  toggleButton:function(){
+	  	$('#'+this.props.key+'_toggleButton').toggleClass('hide').focus();
 	  },
 	  render: function() {
 
@@ -56,9 +59,13 @@ define(['react'], function(React) {
 		              <button type="button " onClick={this.handleClick} className="btn btn-ttc btn-primary margin-right">
 		                <span className="glyphicon glyphicon-play"></span> play
 		              </button>
+		              <button type="button " onClick={this.toggleButton} className="btn btn-ttc btn-primary margin-right">
+		                  <span className="glyphicon ">url </span>
+		              </button>
 		              <button type="button " className="btn btn-ttc btn-primary del">
 		                  <span className="glyphicon glyphicon-trash"></span>
-		              </button>
+		              </button><br>
+		              <input type="text" id={this.props.key + '_toggleButton' } defaultValue={this.props.source} className="hide form-control"> </input></br>
 		            </div>
 		      </div>
 		      );
