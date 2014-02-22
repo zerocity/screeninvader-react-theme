@@ -8,6 +8,7 @@ var SearchResults = React.createClass({
     if (typeof data !== 'undefined') {
     var queryItems = data.map(function (item, index){
     return (<MediaItem
+          	type={'search'}
             isPlaying='no'
             key={index}
             source={item.source}

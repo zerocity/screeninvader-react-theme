@@ -72,6 +72,7 @@ var Playlist = React.createClass({
       var mediaItems = _.items.map(function (item, index){
           var classPlaying = (index == isPlaying) ? 'isPlaying' : '';
           return (<MediaItem
+          	type={'playlist'}
             isPlaying={classPlaying}
             key={index}
             source={item.source}
@@ -178,7 +179,7 @@ var InterfaceComponent = React.createClass({
               <YoutubeSearch router={router} />
               <BarComponent router={router} />
               <Screeninvader
-              url="http://localhost:5555/cgi-bin/get?/."
+              url="/cgi-bin/get?/."
               pollInterval={5000} router={router}/>
             </div>);}
 });

@@ -3,6 +3,7 @@
 define(['react'], function(React) {
 
 	var YouTubeThumbnail = React.createClass({
+		//TODO 404 redirect to next thumbnail
 	  render: function() {
 	    var cssStyle = {
 	      width: '64px',
@@ -18,28 +19,51 @@ define(['react'], function(React) {
 
 	var MediaItem = React.createClass({
 	  handleClick: function(event) {
-	    $.get('http://localhost:5555/cgi-bin/playlist_jump?'+this.props.key);
+	    $.get('/cgi-bin/playlist_jump?'+this.props.key);
+	  },
+	  addItem:function(){
+	  	console.log(this.props.source);
+	  	$.get('/cgi-bin/show?'+this.props.source)
 	  },
 	  render: function() {
 
 	    var cssMedia= "media media-ttc " + this.props.isPlaying ; // dirty fix
 
-	    return  (
-	      <div className={cssMedia}>
-	            <a className="pull-left" href="#">
-	              <YouTubeThumbnail youtubeUrl={this.props.source}/>
-	            </a>
-	            <div className="media-body">
-	              <h4 className="media-heading">{this.props.title}</h4>
-	              <button type="button " onClick={this.handleClick} className="btn btn-ttc btn-primary margin-right">
-	                <span className="glyphicon glyphicon-play"></span> play
-	              </button>
-	              <button type="button " className="btn btn-ttc btn-primary del">
-	                  <span className="glyphicon glyphicon-trash"></span>
-	              </button>
-	            </div>
-	      </div>
-	      );
+	    if (this.props.type == "search") {
+		    return  (
+		      <div className={cssMedia}>
+		            <a className="pull-left" href="#">
+		              <YouTubeThumbnail youtubeUrl={this.props.source}/>
+		            </a>
+		            <div className="media-body">
+		              <h4 className="media-heading">{this.props.title}</h4>
+		              <button type="button " onClick={this.addItem} className="btn btn-ttc btn-primary margin-right">
+		                <span className="glyphicon glyphicon-plus"></span> add
+		              </button>
+		            </div>
+		      </div>
+		      );
+	    }
+
+	    if (this.props.type == "playlist") {
+		    return  (
+		      <div className={cssMedia}>
+		            <a className="pull-left" href="#">
+		              <YouTubeThumbnail youtubeUrl={this.props.source}/>
+		            </a>
+		            <div className="media-body">
+		              <h4 className="media-heading">{this.props.title}</h4>
+		              <button type="button " onClick={this.handleClick} className="btn btn-ttc btn-primary margin-right">
+		                <span className="glyphicon glyphicon-play"></span> play
+		              </button>
+		              <button type="button " className="btn btn-ttc btn-primary del">
+		                  <span className="glyphicon glyphicon-trash"></span>
+		              </button>
+		            </div>
+		      </div>
+		      );
+	    }
+
 	  }
 	});
 
