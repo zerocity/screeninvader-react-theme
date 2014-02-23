@@ -25,10 +25,6 @@ require.config({
   }
 });
 
-require(["backbone", "router",'react',"jsx!app"], function(Backbone,Router,React,InterfaceComponent) {
-	/** @jsx React.DOM */
-	//app.run();
+require(["backbone",'react',"jsx!app"], function(Backbone,React,InterfaceComponent) {
 
-/*  new Router();
-  Backbone.history.start();*/
 });

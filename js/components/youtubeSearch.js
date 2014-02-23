@@ -1,8 +1,9 @@
 /** @jsx React.DOM */
 
-define(['react','jsx!components/items'], function(React,MediaItem) {
+define(['react',
+	'jsx!components/items'], function(React,MediaItem) {
 
-var SearchResults = React.createClass({
+var QueryResults = React.createClass({
   render: function(){
     var data = this.props.data
     if (typeof data !== 'undefined') {
@@ -64,7 +65,7 @@ var YoutubeSearch = React.createClass({
           </span>
         </div>
         <div className="results">
-          <SearchResults data={data} />
+          <QueryResults data={data} />
         </div>
       </div>);
   }

@@ -175,12 +175,10 @@ var InterfaceComponent = React.createClass({
               <UrlSearch router={router} />
               <Screeninvader
               url="/cgi-bin/get?/."
-              pollInterval={5000} router={router}/>
+              pollInterval={1000} router={router}/>
             </div>);}
 });
 
 React.renderComponent(
-  <InterfaceComponent router={router} />,
-  document.getElementById('playlist')
-);
+  <InterfaceComponent router={router} />, document.getElementById('playlist'));
 });
