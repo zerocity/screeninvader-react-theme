@@ -1,12 +1,12 @@
 /** @jsx React.DOM */
 define(['react',
 				'backbone',
+				'jsx!components/videoController',
 				'jsx!components/remotepanel',
 				'jsx!components/youtubeSearch',
 				'jsx!components/urlSearch',
 				'jsx!components/items'],
-				function(React,Backbone,RemotePanel,searchComponent,urlSearch,MediaItem) {
-
+				function(React,Backbone,videoController,RemotePanel,searchComponent,urlSearch,MediaItem) {
 
 /*
 <DisplayPanel data = {_.display} />
@@ -64,7 +64,7 @@ var Playlist = React.createClass({
     if (typeof _ !== 'undefined') {
       var isPlaying = _.index;
       var mediaItems = _.items.map(function (item, index){
-          var classPlaying = (index == isPlaying) ? 'isPlaying' : '';
+          var classPlaying = (index == isPlaying) ? 'isPlaying' : ''; // set isPlaying class to the current playing item
           return (<MediaItem
           	type={'playlist'}
             isPlaying={classPlaying}
@@ -72,7 +72,7 @@ var Playlist = React.createClass({
             source={item.source}
             title={item.title} />);
       });
-      return (<div className="video padding-top padding-bottom padding-right" >{mediaItems}</div>);
+      return (<div className="playlist controller-box" >{mediaItems}</div>);
     }else{
       return (<p>loading</p>);
     }
@@ -111,6 +111,7 @@ var Screeninvader = React.createClass({
 
     return (
       <div className={className}>
+      	<videoController />
 	      <Playlist data={_.playlist} />
 	      <RemotePanel data={_}/>
       </div>
@@ -119,7 +120,8 @@ var Screeninvader = React.createClass({
 });
 
 /* ########### ROUTER ###########
-
+TODO septate the router function in its own files
+problem with require js. 'this' is not available in separate files etc ...
 */
 
 var RouterMixin = {
@@ -166,11 +168,47 @@ Backbone.history.start();
 
 */
 
+var MenuUrl  = React.createClass({
+	render : function() {
+		return (<li className="menu">
+			<span className="label label-green">
+				<a href="#/urlSearch"> Url</a>
+			</span></li>) }
+});
+
+var MenuSearch  = React.createClass({
+	render : function() {
+		return (<li className="menu">
+			<span className="label label-green">
+			<a href="#/search"> Search</a>
+			</span></li>) }
+});
+
+var MenuPlaylist  = React.createClass({
+	render : function() {
+		return (<li className="menu">
+			<span className="label label-green">
+			<a href="#/playlist"> Playlist</a>
+			</span></li>) }
+});
+
+var Menu  = React.createClass({
+	render : function() {
+		return (<div className="box">
+			<ul className="menu">
+				<MenuSearch/>
+				<MenuUrl/>
+				<MenuPlaylist/>
+			</ul></div>)
+	}
+})
+
 var InterfaceComponent = React.createClass({
         mixins : [RouterMixin],
         render : function() {
           var router = this.props.router;
           return (<div>
+          		<Menu/>
               <YoutubeSearch router={router} />
               <UrlSearch router={router} />
               <Screeninvader

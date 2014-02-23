@@ -27,7 +27,7 @@ define(['react',
 var RemotePanel = React.createClass({
 	render: function() {
 		var _ = this.props.data;
-		return (<nav className="remote-botton-fixed">
+		return (<div className="box">
 			<ul className="list-inline">
 	      <QueuePanel data = {_.queue} />
 				<PlayerPanel data = {_.player} />
@@ -35,7 +35,7 @@ var RemotePanel = React.createClass({
 	      <ImagePanel data = {_.image} />
 	      <BrowserPanel data = {_.browser} />
 	   	</ul>
-			</nav>);
+			</div>);
 	}
 });
 

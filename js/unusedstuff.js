@@ -1,0 +1,40 @@
+<a className="pull-left" href="#" onClick={ this.handleClick }>
+    <YouTubeThumbnail youtubeUrl={this.props.source}/>
+</a>
+<div className="media-body">
+    <h4 className="media-heading">{ this.props.title}</h4>
+    <div className="itemControl hide">
+        <button type="button " onClick={ this.handleClick } className="btn playlist-btn ">
+            <span className="glyphicon glyphicon-play"></span>play
+        </button>
+        <button type="button " onClick={ this.toggleButton } className="btn playlist-btn">
+            <span className="glyphicon ">url</span>
+        </button>
+        <button type="button " onClick={this.removeItem } className="btn playlist-btn">
+            <span className="glyphicon glyphicon-trash"></span>del
+        </button>
+        <br>
+        <input type="text" id={this.props.key + '_toggleButton' } defaultValue={this.props.source} className="hide form-control"></input>
+        </br>
+    </div>
+</div>
+<div className="pull-right test"></div>
+
+
+<div className="col-xs-2 media-item">
+    <a href="#" onClick={ this.handleClick }>
+        <YouTubeThumbnail youtubeUrl={this.props.source}/>
+    </a>
+</div>
+<div className="col-xs-10">
+    <div className="row">
+        <div className="col-xs-12 media-object">
+            <h4>{ this.props.title}</h4>
+        </div>
+    </div>
+</div>
+<div className="row">
+    <div className="col-xs-12">
+        <p>{ this.props.title}</p>
+    </div>
+</div>

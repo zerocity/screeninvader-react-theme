@@ -1,5 +1,20 @@
 /*DIRTY clean me */
 
+.controller-box{
+	margin-top: 5px;
+	border: 1px solid #7E7E7E;
+	border-radius: 3px;
+	padding: 5px;
+}
+
+.box{
+	margin-top: 5px;
+	border: 1px solid #7E7E7E;
+	border-radius: 3px;
+	padding: 5px;
+
+}
+
 body{
 	font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 14px;
@@ -31,8 +46,13 @@ header{
 	z-index: 1030;
 	position: fixed;
 }
-.main {
+
+/*.main {
 	margin-top: 60px;
+}*/
+
+.control{
+	padding-right: 0px;
 }
 
 .label-green {
@@ -60,7 +80,7 @@ header .container {
 }
 
 a {
-	color: #7E7E7E;
+	color: #ffffff;
 }
 
 .container{
@@ -84,26 +104,51 @@ header ul li{
 	padding: 0px 15px;
 }
 
+ul.menu{
+	padding-left: 0px;
+	color: #41B436;
+}
+
+.menu {
+	color: #41B436;
+	padding-right: 5px;
+	display: inline;
+	list-style: none;
+}
+
+.items{
+	list-style: none;
+}
+
+.items a{
+	list-style: none;
+	color: #41B436;
+}
+
 .remotePanel {
-	font-weight: bold;
+	color: #41B436;
+	padding-right: 5px;
+
+	list-style: none;
+
+/*	font-weight: bold;
 	color: #fff;
 	line-height: 1;
 	display: inline;
 	padding: .2em .6em .3em;
-	text-align: center;
+	text-align: center;*/
 }
 
-.btn-ttc
-.btn-ttc:hover,
-.btn-ttc:active {
-	color: white;
+.itemControl{
+	padding-top: 10px;
+}
+
+.playlist-btn{
+	color: #FFFFFF;
+	margin-right: 10px;
 	border-color: #6E726E;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	background-color: #474746;
-}
-
-.padding-top{
-	padding-top: 5px;
 }
 
 .isPlaying{
@@ -116,9 +161,12 @@ header ul li{
 	border-color: #4E4E4E;
 }
 
+.media-item{
+	padding-left: 0px;
+}
+
 .media-object {
-	width: 64px;
-	height: 64px;
+	min-height: 64px;
 }
 
 .media-ttc:hover{
@@ -127,43 +175,22 @@ header ul li{
 	border-radius: 3px;
 }
 
-.padding-bottom{
+/*.padding-right{
+	padding-right: 20px;
+}*/
+
+/*
 	padding-bottom: 20px;
-}
-
-.padding-left{
 	padding-left: 20px;
-}
+*/
 
-.padding-right{
+.playlist{
+	padding-top: 5px;
+	padding-left: 20px;
 	padding-right: 20px;
 }
 
-.volslider{
-	padding: 10px;
-	margin: 5px;
-	height: 75px;
-}
 
-.margin-right{
-	margin-right: 15px;
-}
-
-.video{
-	display: block;
-}
-
-.progress{
-	width: 100%;
-	height: 30px;
-}
-
-
-
-h5.bottom{
-	margin-top: 3px;
-	margin-bottom: 0px;
-}
 
 .navbar-fixed-ttc{
 	font-family: Calibri,Tahoma,"Lucida Sans Unicode","Lucida Grande",verdana,sans,Arial,geneva,sans-serif;
@@ -175,6 +202,10 @@ h5.bottom{
 	overflow-x: hidden;
 	z-index: 1;
 }
+
+
+/*
+fade in and fade out
 
 .animate-enter {
   opacity    : 0.01;
@@ -198,3 +229,4 @@ a {
   cursor : pointer;
   color  : blue;
 }
+*/
