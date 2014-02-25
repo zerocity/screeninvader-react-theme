@@ -3,8 +3,11 @@
 define(['react'], function(React) {
 
 var VideoStepForwardController = React.createClass({
+	clickHandler:function() {
+      $.get('/cgi-bin/trigger?playerNext');
+		},
 	render: function() {
-		return (<span className="glyphicon glyphicon-step-forward">&nbsp;</span>);
+		return (<span className="glyphicon glyphicon-step-forward" onClick={this.clickHandler} >&nbsp;</span>);
 	}
 });
 

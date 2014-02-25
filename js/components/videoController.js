@@ -8,7 +8,11 @@ define(['react',
 	'jsx!components/videoController/fast-forward',
 	'jsx!components/videoController/fast-backward',
 	'jsx!components/videoController/step-forward',
-	'jsx!components/videoController/step-backward'], function(React,
+	'jsx!components/videoController/step-backward',
+	'jsx!components/panels/sound-minus',
+	'jsx!components/panels/sound-value',
+	'jsx!components/panels/sound-plus',
+	'jsx!components/panels/sound-mute'], function(React,
 		VideoPlayController,
 		VideoStopController,
 		VideoBackwardController,
@@ -16,12 +20,17 @@ define(['react',
 		VideoFastForwardController,
 		VideoFastBackwardController,
 		VideoStepForwardController,
-		VideoStepBackwardController
+		VideoStepBackwardController,
+		SoundMinus,
+		SoundValue,
+		SoundPlus,
+		SoundMute
 		) {
 
 var VideoController = React.createClass({
 	render: function() {
-		return (<div className="controller-box">
+		var _ = this.props.data; // all data
+		return (<div className="box">
 			<VideoStepBackwardController/>
 			<VideoFastBackwardController/>
 			<VideoBackwardController/>
@@ -30,6 +39,11 @@ var VideoController = React.createClass({
 			<VideoForwardController/>
 			<VideoFastForwardController/>
 			<VideoStepForwardController/>
+      <SoundMinus data = {_.sound} />
+      <SoundValue data = {_.sound} />
+      <SoundPlus data = {_.sound} />
+      &nbsp;&nbsp;&nbsp;
+      <SoundMute data = {_.sound} />
 			</div>);
 	}
 });

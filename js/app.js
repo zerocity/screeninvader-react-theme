@@ -5,8 +5,9 @@ define(['react',
 				'jsx!components/remotepanel',
 				'jsx!components/youtubeSearch',
 				'jsx!components/urlSearch',
-				'jsx!components/items'],
-				function(React,Backbone,videoController,RemotePanel,searchComponent,urlSearch,MediaItem) {
+				'jsx!components/items',
+				'router'],
+				function(React,Backbone,videoController,RemotePanel,searchComponent,urlSearch,MediaItem,router) {
 
 /*
 <DisplayPanel data = {_.display} />
@@ -17,6 +18,18 @@ define(['react',
 /* ############# Others  #############
 
 */
+
+var RouterMixin = {
+  componentWillMount : function() {
+    this.callback = (function() {
+      this.forceUpdate();
+    }).bind(this);
+    this.props.router.on("route", this.callback);
+  },
+  componentWillUnmount : function() {
+    this.props.router.off("route", this.callback);
+  }
+};
 
 var YoutubeSearch = React.createClass({
   mixins : [RouterMixin],
@@ -72,7 +85,7 @@ var Playlist = React.createClass({
             source={item.source}
             title={item.title} />);
       });
-      return (<div className="playlist controller-box" >{mediaItems}</div>);
+      return (<div className="playlist box" >{mediaItems}</div>);
     }else{
       return (<p>loading</p>);
     }
@@ -111,7 +124,7 @@ var Screeninvader = React.createClass({
 
     return (
       <div className={className}>
-      	<videoController />
+      	<videoController data={_}/>
 	      <Playlist data={_.playlist} />
 	      <RemotePanel data={_}/>
       </div>
@@ -124,43 +137,7 @@ TODO septate the router function in its own files
 problem with require js. 'this' is not available in separate files etc ...
 */
 
-var RouterMixin = {
-  componentWillMount : function() {
-    this.callback = (function() {
-      this.forceUpdate();
-    }).bind(this);
 
-    this.props.router.on("route", this.callback);
-  },
-  componentWillUnmount : function() {
-    this.props.router.off("route", this.callback);
-  }
-};
-
-var Router = Backbone.Router.extend({
-
-  routes : {
-  	""		: "invader",
-    "search" : "youtubesearch",
-    "urlSearch":"urlSearch",
-    "playlist" : "invader"
-  },
-
-  invader : function() {
-    this.current = "invader";
-  },
-
-  youtubesearch : function() {
-    this.current = "youtubesearch";
-  },
-
-  urlSearch : function() {
-    this.current = "urlSearch";
-  }
-});
-var router = new Router();
-
-Backbone.history.start();
 
 
 
@@ -211,9 +188,7 @@ var InterfaceComponent = React.createClass({
           		<Menu/>
               <YoutubeSearch router={router} />
               <UrlSearch router={router} />
-              <Screeninvader
-              url="/cgi-bin/get?/."
-              pollInterval={1000} router={router}/>
+              <Screeninvader url="/cgi-bin/get?/." pollInterval={800} router={router}/>
             </div>);}
 });
 

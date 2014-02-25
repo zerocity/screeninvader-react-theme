@@ -7,16 +7,14 @@ define(['react',
 	'jsx!components/panels/image',
 	'jsx!components/panels/player',
 	'jsx!components/panels/queue',
-	'jsx!components/panels/radio',
-	'jsx!components/panels/sound',],function(React,
+	'jsx!components/panels/radio'],function(React,
         AnimationPanel,
         BrowserPanel,
         DisplayPanel,
         ImagePanel,
         PlayerPanel,
         QueuePanel,
-        RadioPanel,
-        SoundPanel) {
+        RadioPanel) {
 
 /*
 <DisplayPanel data = {_.display} />
@@ -31,7 +29,6 @@ var RemotePanel = React.createClass({
 			<ul className="list-inline">
 	      <QueuePanel data = {_.queue} />
 				<PlayerPanel data = {_.player} />
-	      <SoundPanel data = {_.sound} />
 	      <ImagePanel data = {_.image} />
 	      <BrowserPanel data = {_.browser} />
 	   	</ul>

@@ -3,8 +3,11 @@
 define(['react'], function(React) {
 
 var VideoFastForwardController = React.createClass({
+	clickHandler:function() {
+      $.get('/cgi-bin/trigger?playerForwardMore');
+		},
 	render: function() {
-		return (<span className="glyphicon glyphicon-fast-forward">&nbsp;</span>);
+		return (<span className="glyphicon glyphicon-fast-forward" onClick={this.clickHandler} >&nbsp;</span>);
 	}
 });
 
