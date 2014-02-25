@@ -15,7 +15,7 @@ define(['react'], function(React) {
 			var classMute = ""
 			if (typeof this.props.data !== 'undefined') {
       	//console.log(this.props.data.mute);
-      	var classMute = (this.props.data.mute == 'true') ? 'isPlaying' : '';
+      	var classMute = (this.props.data.mute == 'true') ? 'setYellow' : '';
 			}
 
 			return ( <span className= {'glyphicon glyphicon-volume-off '+ classMute } onClick={this.clickHandler}></span>);
