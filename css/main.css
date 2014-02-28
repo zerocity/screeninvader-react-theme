@@ -1,10 +1,29 @@
+.glyphicon{
+}
+
+.head-line .glyphicon{
+	margin-bottom: 15px;
+	font-size:  22px;
+}
+
+
+.videoController .glyphicon{
+	margin-left: 10px;
+	font-size:  22px;
+	width: 25px;
+}
+.videoController .glyphicon:first-child{
+	margin-left: 0px;
+	font-size:  22px;
+	width: 25px;
+}
+
 
 .box{
 	margin-top: 5px;
 	border: 1px solid #7E7E7E;
 	border-radius: 3px;
 	padding: 5px;
-
 }
 
 .setYellow{

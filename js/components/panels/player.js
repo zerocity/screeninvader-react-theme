@@ -22,7 +22,8 @@ var PlayerPanel = React.createClass({
 		}
 	}	,
   componentWillMount: function() {
-    setTimeout(this.getYoutubeData,2000);
+    //todo data from current played item
+    //setTimeout(this.getYoutubeData,2000);
   },
 	render: function() {
 		var _ = this.props.data
@@ -35,7 +36,7 @@ var PlayerPanel = React.createClass({
 				text = ' ' + _.category // text if activated
 			}
 		}
-		return (<li><span className={classActived}> {text}</span></li>);
+		return (<div className={classActived}></div>)
 	}
 });
 

@@ -7,7 +7,7 @@ define(['react'], function(React) {
       $.get('/cgi-bin/trigger?playerRewind');
 		},
 		render: function() {
-			return (<span className="glyphicon glyphicon-backward" onClick={this.clickHandler} >&nbsp;</span>);
+			return (<div className="glyphicon glyphicon-backward" onClick={this.clickHandler} >&nbsp;</div>);
 		}
 	});
 	return VideoBackwardController

@@ -8,7 +8,7 @@ define(['react'], function(React) {
 		},
 		render: function() {
 			var _ = this.props.data
-			return (<span className= {'glyphicon glyphicon-minus'} onClick={this.clickHandler}></span>);
+			return (<div className= {'glyphicon glyphicon-minus'} onClick={this.clickHandler}></div>);
 		}
 	});
 	return SoundMinus

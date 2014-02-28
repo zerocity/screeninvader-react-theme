@@ -4,7 +4,7 @@ define(['react'], function(React) {
 
 var DisplayPanel = React.createClass({
 	render: function() {
-		return (<li>Display On</li>);
+		return (<div>Display On</div>);
 	}
 });
 

@@ -85,7 +85,17 @@ var Playlist = React.createClass({
             source={item.source}
             title={item.title} />);
       });
-      return (<div className="playlist box" >{mediaItems}</div>);
+      return (<div className="box" >
+      	<div className="row head-line">
+	      	<div className="col-xs-2 glyphicon glyphicon-align-justify"></div>
+	      	<div className="col-xs-2 glyphicon glyphicon-list"></div>
+	      	<div className="col-xs-2 glyphicon glyphicon-th-list"></div>
+	      	<div className="col-xs-2 glyphicon glyphicon-th"></div>
+      	</div>
+      	<div className="playlist">
+      		{mediaItems}
+				</div>
+      	</div>);
     }else{
       return (<p>loading</p>);
     }

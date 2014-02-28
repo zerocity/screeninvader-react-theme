@@ -13,7 +13,7 @@ var QueuePanel = React.createClass({
 				text = ' ' // text if activated
 			}
 		}
-		return (<li><span className={classActived}> {text}</span></li>);
+		return (<div className={classActived}> {text}</div>);
 	}
 });
 

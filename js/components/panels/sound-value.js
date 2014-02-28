@@ -8,7 +8,7 @@ define(['react'], function(React) {
 			if (typeof _ !== 'undefined') {
 				return (<span> { ' ' + _.volume + ' %'} </span>);
 			}
-			return (<span > loading </span>);
+			return (<p > loading </p>);
 		}
 	});
 	return SoundValue

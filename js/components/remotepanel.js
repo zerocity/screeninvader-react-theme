@@ -25,13 +25,17 @@ define(['react',
 var RemotePanel = React.createClass({
 	render: function() {
 		var _ = this.props.data;
-		return (<div className="box">
-			<ul className="list-inline">
-	      <QueuePanel data = {_.queue} />
-				<PlayerPanel data = {_.player} />
-	      <ImagePanel data = {_.image} />
-	      <BrowserPanel data = {_.browser} />
-	   	</ul>
+		return (<div className="box videoController">
+			<div className="row">
+				<div className="col-xs-12 col-sm-6 col-md-4">
+					<div className="pull-left">
+			      <QueuePanel data = {_.queue} />
+			      <ImagePanel data = {_.image} />
+			      <BrowserPanel data = {_.browser} />
+						<PlayerPanel data = {_.player} />
+	   			</div>
+	   			</div>
+	   		</div>
 			</div>);
 	}
 });

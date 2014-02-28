@@ -7,7 +7,7 @@ var VideoStopController = React.createClass({
       $.get('/cgi-bin/trigger?playerClose');
 	},
 	render: function() {
-		return (<span className="glyphicon glyphicon-stop" onClick={this.clickHandler} >&nbsp;</span>);
+		return (<div className="glyphicon glyphicon-stop" onClick={this.clickHandler} >&nbsp;</div>);
 	}
 });
 

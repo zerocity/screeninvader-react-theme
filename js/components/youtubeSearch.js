@@ -15,7 +15,10 @@ var QueryResults = React.createClass({
             source={item.source}
             title={item.title} />)
       });
-      return (<div className="video padding-top padding-bottom padding-right" >{queryItems}</div>);
+      return (<div className="row" >
+
+      	{queryItems}
+      	</div>);
     }else{
       return (<p>loading</p>);
     }
@@ -57,16 +60,15 @@ var YoutubeSearch = React.createClass({
   render: function () {
     var data = this.state.data
     return (
-      <div>
-        <div className="input-group">
+
+        <div className="box">
+         <div className="input-group">
           <input type="text" className="form-control" id="youtubeQuery"></input>
           <span className="input-group-btn">
           <button className="btn btn-default" onClick={this.clickHandler} type="button" id="youtubeSearch">Go!</button>
           </span>
         </div>
-        <div className="results">
           <QueryResults data={data} />
-        </div>
       </div>);
   }
 });

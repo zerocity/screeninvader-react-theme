@@ -7,7 +7,7 @@ var VideoPlayController = React.createClass({
       $.get('/cgi-bin/trigger?playerPause');
 		},
 	render: function() {
-		return (<span className="glyphicon glyphicon-pause" onClick={this.clickHandler} >&nbsp;</span>);
+		return (<div className="glyphicon glyphicon-pause" onClick={this.clickHandler} >&nbsp;</div>);
 	}
 });
 

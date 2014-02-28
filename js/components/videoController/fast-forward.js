@@ -7,7 +7,7 @@ var VideoFastForwardController = React.createClass({
       $.get('/cgi-bin/trigger?playerForwardMore');
 		},
 	render: function() {
-		return (<span className="glyphicon glyphicon-fast-forward" onClick={this.clickHandler} >&nbsp;</span>);
+		return (<div className="glyphicon glyphicon-fast-forward" onClick={this.clickHandler} >&nbsp;</div>);
 	}
 });
 

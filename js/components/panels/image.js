@@ -13,7 +13,7 @@ var ImagePanel = React.createClass({
 				text = 'On' // text if activated
 			}
 		}
-		return (<li><span className={classActived}>{text}</span></li>);
+		return (<div className={classActived}>{text}</div>);
 	}
 });
 

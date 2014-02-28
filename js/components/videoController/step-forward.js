@@ -7,7 +7,7 @@ var VideoStepForwardController = React.createClass({
       $.get('/cgi-bin/trigger?playerNext');
 		},
 	render: function() {
-		return (<span className="glyphicon glyphicon-step-forward" onClick={this.clickHandler} >&nbsp;</span>);
+		return (<div className="glyphicon glyphicon-step-forward" onClick={this.clickHandler} >&nbsp;</div>);
 	}
 });
 

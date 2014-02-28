@@ -7,7 +7,7 @@ define(['react'], function(React) {
       $.get('/cgi-bin/trigger?playerPrevious');
 		},
 		render: function() {
-			return (<span className="glyphicon glyphicon-step-backward" onClick={this.clickHandler} >&nbsp;</span>);
+			return (<div className="glyphicon glyphicon-step-backward" onClick={this.clickHandler} >&nbsp;</div>);
 		}
 	});
 	return VideoStepBackwardController

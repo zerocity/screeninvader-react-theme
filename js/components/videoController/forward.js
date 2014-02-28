@@ -7,7 +7,7 @@ var VideoForwardController = React.createClass({
       $.get('/cgi-bin/trigger?playerForward');
 		},
 	render: function() {
-		return (<span className="glyphicon glyphicon-forward" onClick={this.clickHandler} >&nbsp;</span>);
+		return (<div className="glyphicon glyphicon-forward" onClick={this.clickHandler} >&nbsp;</div>);
 	}
 });
 

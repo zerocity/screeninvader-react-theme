@@ -18,7 +18,7 @@ define(['react'], function(React) {
       	var classMute = (this.props.data.mute == 'true') ? 'setYellow' : '';
 			}
 
-			return ( <span className= {'glyphicon glyphicon-volume-off '+ classMute } onClick={this.clickHandler}></span>);
+			return ( <div className= {'pull-left glyphicon glyphicon-volume-off '+ classMute } onClick={this.clickHandler}></div>);
 		}
 	});
 	return SoundMinus
