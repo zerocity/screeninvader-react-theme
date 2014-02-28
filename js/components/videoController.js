@@ -22,9 +22,9 @@ define(['react',
 		) {
 
 var VideoController = React.createClass({
-	toggleSoundMenu: function(event){
+	toggleMenu: function(event){
 		console.log(event.target);
-		$('#soundController').toggleClass('hide');
+		$('#toggleMenu').toggleClass('hide');
 	},
 
 	render: function() {
@@ -43,10 +43,10 @@ var VideoController = React.createClass({
 						<VideoFastForwardController/>
 						<VideoStepForwardController/>
 					</div>
-					<div className="pull-right glyphicon glyphicon-volume-up" onClick={this.toggleSoundMenu }></div>
+					<div className="pull-right glyphicon glyphicon-cog" onClick={this.toggleMenu }></div>
 				</div>
 
-				<div id="soundController" className="hide col-xs-12 col-sm-6 col-md-2">
+				<div id="toggleMenu" className="hide col-xs-12 col-sm-6 col-md-2">
 					<SoundPanel data = {_.sound}/>
 				</div>
 			</div>

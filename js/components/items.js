@@ -4,13 +4,20 @@ define(['react'], function(React) {
 
   var YouTubeThumbnail = React.createClass({
     render: function() {
-      var cssStyle = {
-        width: '64px',
-        height: '64px'
+      if (typeof this.props.size === 'undefined') {
+        var cssStyle = {
+          width: '64px',
+          height: '64px'
+        };
+      }else{
+        var cssStyle = {
+          width: this.props.size+'px',
+          height: this.props.size+'px'
+        };
       }
-      //get youtubeId from this urlPattern http://www.youtube.com/watch?v=EfDfdyBldz0
-      var youtubeId = this.props.youtubeUrl.split('v=')[1]
-      var youtubeThumbnailSrc = "http://img.youtube.com/vi/"+ youtubeId +"/default.jpg"
+
+      var youtubeId = this.props.youtubeUrl.split('v=')[1];
+      var youtubeThumbnailSrc = "http://img.youtube.com/vi/"+ youtubeId +"/default.jpg";
 
       return (<img className="media-item" src={youtubeThumbnailSrc} style={cssStyle}></img>);
     }
@@ -36,40 +43,51 @@ define(['react'], function(React) {
     },
     render: function() {
 
-      var cssMedia= "media media-ttc row " + this.props.isPlaying ; // dirty fix
+      var cssMedia= "row " + this.props.isPlaying ; // dirty fix
 
-      if (this.props.type == "search") {
-        return  (
-          <div className={cssMedia}>
-                <a className="pull-left" href="#">
-                  <YouTubeThumbnail youtubeUrl={this.props.source}/>
-                </a>
-                <div className="media-body">
-                  <h4 className="media-heading">{this.props.title}</h4>
-                  <button type="button " onClick={this.addItem} className="btn btn-primary btn-ttc ">
-                    <span className="glyphicon glyphicon-plus"></span> add
-                  </button>
-                </div>
+      var thumbnail = (<YouTubeThumbnail youtubeUrl={this.props.source} size="32" />);
+
+      var addButton = (<button type="button " onClick={this.addItem} className="btn btn-primary btn-ttc ">
+                  <span className="glyphicon glyphicon-plus"></span>
+                </button>);
+
+
+    if (this.props.type == "search") {
+      return  (
+        <div className={cssMedia + " items"}>
+          <div className="col-xs-10 col-md-11">
+              {thumbnail} { this.props.key} - { this.props.title}
           </div>
-          );
-      }
+          <div className="col-xs-2 col-md-1">
+              <a href="#" onClick={ this.addItem } ><span className="glyphicon glyphicon-plus"></span> </a>
+          </div>
+        </div>
+        );
+    }
+
 
     if (this.props.type == "playlist"){
-    		return (<div>
-    			<li className={cssMedia + " items"}>
-	    			<div className="col-xs-10" onClick={ this.handleClick }>
-	    				{ this.props.key} - { this.props.title}
-	    			</div>
-	    			<div className="col-xs-2 control">
-		    			<a href="#" onClick={ this.removeItem } ><span className="glyphicon glyphicon-trash"></span> </a>
-		    			<a href="#" onClick={ this.toggleButton } >url</a>
-	    			</div>
-    			</li>
-        <input type="text" id={this.props.key + '_toggleButton' } defaultValue={this.props.source} className="hide form-control"></input>
-    	</div>)
+      return  (
+        <div className={cssMedia + " items"}>
+          <div className="col-xs-10 col-md-11">
+            <span className="playMe" onClick={ this.handleClick }>{thumbnail} { this.props.key} - { this.props.title}</span>
+          </div>
+          <div className="col-xs-2 col-md-1 control">
+              <a href="#" onClick={ this.removeItem } ><span className="glyphicon glyphicon-trash"></span> </a>
+              <a href="#" onClick={ this.toggleButton } >url</a>
+          </div>
+          <input type="text"
+              id={this.props.key + '_toggleButton' }
+              defaultValue={this.props.source}
+              className="hide form-control">
+          </input>
+        </div>
+        );
     }
+
 
     }
   });
+
   return MediaItem
 });

@@ -7,7 +7,7 @@ var QueryResults = React.createClass({
   render: function(){
     var data = this.props.data
     if (typeof data !== 'undefined') {
-    var queryItems = data.map(function (item, index){
+    var mediaItems = data.map(function (item, index){
     return (<MediaItem
           	type={'search'}
             isPlaying='no'
@@ -15,10 +15,26 @@ var QueryResults = React.createClass({
             source={item.source}
             title={item.title} />)
       });
-      return (<div className="row" >
 
-      	{queryItems}
-      	</div>);
+    	if (mediaItems.length == 0) {
+    		var items = (<div><p>no search results </p></div>)
+    	}else{
+    		var items =(<div className="box" > <div className="playlist"> {mediaItems} </div> </div>)
+    	}
+
+      return (
+      	<div>
+	      	<div className="box" >
+		      	<div className="row head-line">
+			      	<div className="col-xs-2 glyphicon glyphicon-align-justify"></div>
+			      	<div className="col-xs-2 glyphicon glyphicon-list"></div>
+			      	<div className="col-xs-2 glyphicon glyphicon-th-list"></div>
+			      	<div className="col-xs-2 glyphicon glyphicon-th"></div>
+		      	</div>
+	      	</div>
+	      	{items}
+      	</div>
+      	);
     }else{
       return (<p>loading</p>);
     }

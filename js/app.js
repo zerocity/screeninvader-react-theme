@@ -7,7 +7,14 @@ define(['react',
 				'jsx!components/urlSearch',
 				'jsx!components/items',
 				'router'],
-				function(React,Backbone,videoController,RemotePanel,searchComponent,urlSearch,MediaItem,router) {
+				function(React,
+									Backbone,
+									videoController,
+									RemotePanel,
+									searchComponent,
+									urlSearch,
+									MediaItem,
+									router){
 
 /*
 <DisplayPanel data = {_.display} />
@@ -85,17 +92,21 @@ var Playlist = React.createClass({
             source={item.source}
             title={item.title} />);
       });
-      return (<div className="box" >
-      	<div className="row head-line">
-	      	<div className="col-xs-2 glyphicon glyphicon-align-justify"></div>
-	      	<div className="col-xs-2 glyphicon glyphicon-list"></div>
-	      	<div className="col-xs-2 glyphicon glyphicon-th-list"></div>
-	      	<div className="col-xs-2 glyphicon glyphicon-th"></div>
+      return (
+      	<div>
+	      	<div className="box" >
+		      	<div className="row head-line">
+			      	<div className="col-xs-2 glyphicon glyphicon-align-justify"></div>
+			      	<div className="col-xs-2 glyphicon glyphicon-list"></div>
+			      	<div className="col-xs-2 glyphicon glyphicon-th-list"></div>
+			      	<div className="col-xs-2 glyphicon glyphicon-th"></div>
+		      	</div>
+	      	</div>
+		      <div className="box" >
+		      	<div className="playlist"> {mediaItems} </div>
+	      	</div>
       	</div>
-      	<div className="playlist">
-      		{mediaItems}
-				</div>
-      	</div>);
+      	);
     }else{
       return (<p>loading</p>);
     }
