@@ -168,26 +168,35 @@ problem with require js. 'this' is not available in separate files etc ...
 
 var MenuUrl  = React.createClass({
 	render : function() {
-		return (<li className="menu">
-			<span className="label label-green">
-				<a href="#/urlSearch"> Url</a>
-			</span></li>) }
+		return (
+			<li className="menu">
+				<div className="glyphicon glyphicon-link">
+					<a href="#/urlSearch" className="navbar-link"> Url</a>
+				</div>
+			</li>
+				) }
 });
 
 var MenuSearch  = React.createClass({
 	render : function() {
-		return (<li className="menu">
-			<span className="label label-green">
-			<a href="#/search"> Search</a>
-			</span></li>) }
+		return (
+			<li className="menu">
+				<div className="glyphicon glyphicon-search">
+					<a href="#/search"> </a>
+				</div>
+			</li>
+				) }
 });
 
 var MenuPlaylist  = React.createClass({
 	render : function() {
-		return (<li className="menu">
-			<span className="label label-green">
-			<a href="#/playlist"> Playlist</a>
-			</span></li>) }
+		return (
+			<li className="menu">
+				<div className="glyphicon glyphicon-th-list">
+					<a href="#/playlist"> Playlist</a>
+				</div>
+			</li>
+				) }
 });
 
 var Menu  = React.createClass({
