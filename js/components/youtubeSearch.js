@@ -19,19 +19,10 @@ var QueryResults = React.createClass({
     	if (mediaItems.length == 0) {
     		var items = (<div><p>no search results </p></div>)
     	}else{
-    		var items =(<div className="box" > <div className="playlist"> {mediaItems} </div> </div>)
+    		var items =(<div className="box" > <div className="playlist"> {mediaItems} </div> </div>);
     	}
-
       return (
       	<div>
-	      	<div className="box" >
-		      	<div className="row head-line">
-			      	<div className="col-xs-2 glyphicon glyphicon-align-justify"></div>
-			      	<div className="col-xs-2 glyphicon glyphicon-list"></div>
-			      	<div className="col-xs-2 glyphicon glyphicon-th-list"></div>
-			      	<div className="col-xs-2 glyphicon glyphicon-th"></div>
-		      	</div>
-	      	</div>
 	      	{items}
       	</div>
       	);

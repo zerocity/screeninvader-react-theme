@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 
-define(['react'], function(React) {
+define(['react','store'], function(React,store) {
 
   var YouTubeThumbnail = React.createClass({
     render: function() {
@@ -45,18 +45,27 @@ define(['react'], function(React) {
 
       var cssMedia= "row " + this.props.isPlaying ; // dirty fix
 
-      var thumbnail = (<YouTubeThumbnail youtubeUrl={this.props.source} size="32" />);
-
       var addButton = (<button type="button " onClick={this.addItem} className="btn btn-primary btn-ttc ">
                   <span className="glyphicon glyphicon-plus"></span>
                 </button>);
 
+      var pref = store.get('preference');
+
+      if (pref.viewType == '0') {
+				var thumbnail = ''
+      }else if (pref.viewType == '1') {
+	      var thumbnail = (<YouTubeThumbnail youtubeUrl={this.props.source} size="32" />);
+      }else if (pref.viewType == '2') {
+	      var thumbnail = (<YouTubeThumbnail youtubeUrl={this.props.source} size="64" />);
+      }else if (pref.viewType == '3') {
+	      var thumbnail = (<YouTubeThumbnail youtubeUrl={this.props.source} size="96" />);
+      }
 
     if (this.props.type == "search") {
       return  (
         <div className={cssMedia + " items"}>
           <div className="col-xs-10 col-md-11">
-              {thumbnail} { this.props.key} - { this.props.title}
+            <span className="playMe">{thumbnail} { this.props.key} - { this.props.title}</span>
           </div>
           <div className="col-xs-2 col-md-1">
               <a href="#" onClick={ this.addItem } ><span className="glyphicon glyphicon-plus"></span> </a>

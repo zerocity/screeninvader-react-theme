@@ -6,7 +6,8 @@ require.config({
     "backbone"   : "lib/backbone-1.1.0/build/backbone",
     "bootstrap"  : "lib/bootstrap",
     "react"      : "lib/react/react",
-    "JSXTransformer": "lib/react/JSXTransformer"
+    "JSXTransformer": "lib/react/JSXTransformer",
+    "store": "lib/store/store.min"
   },
   "shim" : {
     "backbone" : {
@@ -25,6 +26,6 @@ require.config({
   }
 });
 
-require(["backbone",'react',"jsx!app"], function(Backbone,React,InterfaceComponent) {
+require(["backbone",'react',"jsx!app","store"], function(Backbone,React,InterfaceComponent,store) {
 
 });

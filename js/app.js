@@ -6,6 +6,8 @@ define(['react',
 				'jsx!components/youtubeSearch',
 				'jsx!components/urlSearch',
 				'jsx!components/items',
+				'jsx!components/viewSwitcher',
+				'store',
 				'router'],
 				function(React,
 									Backbone,
@@ -14,6 +16,8 @@ define(['react',
 									searchComponent,
 									urlSearch,
 									MediaItem,
+									viewSwitcher,
+									store,
 									router){
 
 /*
@@ -93,19 +97,9 @@ var Playlist = React.createClass({
             title={item.title} />);
       });
       return (
-      	<div>
-	      	<div className="box" >
-		      	<div className="row head-line">
-			      	<div className="col-xs-2 glyphicon glyphicon-align-justify"></div>
-			      	<div className="col-xs-2 glyphicon glyphicon-list"></div>
-			      	<div className="col-xs-2 glyphicon glyphicon-th-list"></div>
-			      	<div className="col-xs-2 glyphicon glyphicon-th"></div>
-		      	</div>
-	      	</div>
 		      <div className="box" >
 		      	<div className="playlist"> {mediaItems} </div>
 	      	</div>
-      	</div>
       	);
     }else{
       return (<p>loading</p>);
@@ -115,6 +109,24 @@ var Playlist = React.createClass({
 
 var Screeninvader = React.createClass({
   mixins : [RouterMixin],
+  getInitialState: function() {
+  	if (!store.enabled) {
+            alert('Local storage is not supported by your browser. Please disabled "Private Mode", or upgrade to a modern browser');
+            return
+        }
+    // Set init local storage
+    if (typeof store.get('preference') === 'undefined') {
+    	console.log('init personal Preferences');
+	    store.set('preference', {
+	     viewType: '0',
+	     name: 'anno'
+	   	});
+    }
+
+
+   // Set state for react
+    return {data: []};
+  },
   handle : function() {
     this.props.router.navigate("invader", {
       trigger : true
@@ -127,9 +139,6 @@ var Screeninvader = React.createClass({
         this.setState({data: data});
       }.bind(this)
     });
-  },
-  getInitialState: function() {
-    return {data: []};
   },
   componentWillMount: function() {
     this.loadCommentsFromServer();
@@ -146,6 +155,7 @@ var Screeninvader = React.createClass({
     return (
       <div className={className}>
       	<videoController data={_}/>
+      	<viewSwitcher />
 	      <Playlist data={_.playlist} />
 	      <RemotePanel data={_}/>
       </div>
@@ -170,33 +180,30 @@ var MenuUrl  = React.createClass({
 	render : function() {
 		return (
 			<li className="menu">
-				<div className="glyphicon glyphicon-link">
-					<a href="#/urlSearch" className="navbar-link"> Url</a>
-				</div>
-			</li>
-				) }
+					<a href="#/urlSearch" className="navbar-link">
+						<div className="glyphicon glyphicon-link"> </div>
+					</a>
+			</li>)}
 });
 
 var MenuSearch  = React.createClass({
 	render : function() {
 		return (
 			<li className="menu">
-				<div className="glyphicon glyphicon-search">
-					<a href="#/search"> </a>
-				</div>
-			</li>
-				) }
+					<a href="#/search">
+						<div className="glyphicon glyphicon-search"></div>
+					</a>
+			</li>)}
 });
 
 var MenuPlaylist  = React.createClass({
 	render : function() {
 		return (
 			<li className="menu">
-				<div className="glyphicon glyphicon-th-list">
-					<a href="#/playlist"> Playlist</a>
-				</div>
-			</li>
-				) }
+					<a href="#/playlist">
+						<div className="glyphicon glyphicon-th-list"> </div> Playlist
+					</a>
+			</li>)}
 });
 
 var Menu  = React.createClass({
@@ -218,7 +225,7 @@ var InterfaceComponent = React.createClass({
           		<Menu/>
               <YoutubeSearch router={router} />
               <UrlSearch router={router} />
-              <Screeninvader url="/cgi-bin/get?/." pollInterval={800} router={router}/>
+              <Screeninvader url="/cgi-bin/get?/." pollInterval={500} router={router}/>
             </div>);}
 });
 
