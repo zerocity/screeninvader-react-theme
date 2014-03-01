@@ -7,7 +7,10 @@ define(['react',
 				'jsx!components/urlSearch',
 				'jsx!components/items',
 				'jsx!components/viewSwitcher',
+				'jsx!components/playlist',
 				'store',
+				'jsx!routerMixin',
+				'jsx!menu',
 				'router'],
 				function(React,
 									Backbone,
@@ -17,30 +20,13 @@ define(['react',
 									urlSearch,
 									MediaItem,
 									viewSwitcher,
+									Playlist,
 									store,
+									RouterMixin,
+									Menu,
 									router){
 
-/*
-<DisplayPanel data = {_.display} />
-<RadioPanel data = {_.radio} />
-<AnimationPanel data = {_.animation} />
-*/
-
-/* ############# Others  #############
-
-*/
-
-var RouterMixin = {
-  componentWillMount : function() {
-    this.callback = (function() {
-      this.forceUpdate();
-    }).bind(this);
-    this.props.router.on("route", this.callback);
-  },
-  componentWillUnmount : function() {
-    this.props.router.off("route", this.callback);
-  }
-};
+/* ############# Screeninvader  ############# */
 
 var YoutubeSearch = React.createClass({
   mixins : [RouterMixin],
@@ -75,35 +61,6 @@ var UrlSearch = React.createClass({
       	<urlSearch router={router}/>
       </div>
     );
-  }
-});
-
-/* ############# Screeninvader  #############
-
-*/
-
-var Playlist = React.createClass({
-  render: function() {
-    var _ = this.props.data;
-    if (typeof _ !== 'undefined') {
-      var isPlaying = _.index;
-      var mediaItems = _.items.map(function (item, index){
-          var classPlaying = (index == isPlaying) ? 'isPlaying' : ''; // set isPlaying class to the current playing item
-          return (<MediaItem
-          	type={'playlist'}
-            isPlaying={classPlaying}
-            key={index}
-            source={item.source}
-            title={item.title} />);
-      });
-      return (
-		      <div className="box" >
-		      	<div className="playlist"> {mediaItems} </div>
-	      	</div>
-      	);
-    }else{
-      return (<p>loading</p>);
-    }
   }
 });
 
@@ -163,59 +120,7 @@ var Screeninvader = React.createClass({
   }
 });
 
-/* ########### ROUTER ###########
-TODO septate the router function in its own files
-problem with require js. 'this' is not available in separate files etc ...
-*/
-
-
-
-
-
-/* ############# Docking components  #############
-
-*/
-
-var MenuUrl  = React.createClass({
-	render : function() {
-		return (
-			<li className="menu">
-					<a href="#/urlSearch" className="navbar-link">
-						<div className="glyphicon glyphicon-link"> </div>
-					</a>
-			</li>)}
-});
-
-var MenuSearch  = React.createClass({
-	render : function() {
-		return (
-			<li className="menu">
-					<a href="#/search">
-						<div className="glyphicon glyphicon-search"></div>
-					</a>
-			</li>)}
-});
-
-var MenuPlaylist  = React.createClass({
-	render : function() {
-		return (
-			<li className="menu">
-					<a href="#/playlist">
-						<div className="glyphicon glyphicon-th-list"> </div> Playlist
-					</a>
-			</li>)}
-});
-
-var Menu  = React.createClass({
-	render : function() {
-		return (<div className="box">
-			<ul className="menu">
-				<MenuSearch/>
-				<MenuUrl/>
-				<MenuPlaylist/>
-			</ul></div>)
-	}
-})
+/* ############# Docking components  ############# */
 
 var InterfaceComponent = React.createClass({
         mixins : [RouterMixin],

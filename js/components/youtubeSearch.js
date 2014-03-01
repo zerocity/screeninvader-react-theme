@@ -17,15 +17,11 @@ var QueryResults = React.createClass({
       });
 
     	if (mediaItems.length == 0) {
-    		var items = (<div><p>no search results </p></div>)
+    		var items = (<div><p>no search results </p></div>);
     	}else{
     		var items =(<div className="box" > <div className="playlist"> {mediaItems} </div> </div>);
     	}
-      return (
-      	<div>
-	      	{items}
-      	</div>
-      	);
+      return (<div> {items} </div>);
     }else{
       return (<p>loading</p>);
     }

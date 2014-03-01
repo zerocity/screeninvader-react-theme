@@ -93,10 +93,7 @@ define(['react','store'], function(React,store) {
         </div>
         );
     }
-
-
     }
   });
-
   return MediaItem
 });
