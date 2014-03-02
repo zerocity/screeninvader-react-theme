@@ -24,14 +24,13 @@
 }
 
 .isPlaying{
-	background-color: #F5ED35;
+	background-color: #F5ED35 !important;
+	color: #000000 !important;
 	border-radius: 3px;
 	padding: 5px 0px 5px 0px;
-	color: #000000;
 	font-size: 1.4rem;
 	margin-top: 5px;
 	margin-bottom: 5px;
-	z-index: 1000;
 }
 
 .isPlaying a {
@@ -68,7 +67,15 @@
 
 .playMe{
 	cursor:pointer;
+
 }
+@media (max-width: 768px){
+	.playMe{
+		height: 25px ;
+		overflow: hidden;
+	}
+}
+
 
 .items a{
 	color: #41B436;

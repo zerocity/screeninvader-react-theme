@@ -27,5 +27,13 @@ require.config({
 });
 
 require(["backbone",'react',"jsx!app","store"], function(Backbone,React,InterfaceComponent,store) {
+    // Set init local storage
+    if (typeof store.get('preference') === 'undefined') {
+    	console.log('init personal Preferences');
+	    store.set('preference', {
+	     viewType: '0',
+	     name: 'anno'
+	   	});
+    }
 
 });

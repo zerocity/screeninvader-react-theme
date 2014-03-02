@@ -7,14 +7,22 @@ define(['react',
 	'jsx!components/panels/image',
 	'jsx!components/panels/player',
 	'jsx!components/panels/queue',
-	'jsx!components/panels/radio'],function(React,
+	'jsx!components/panels/radio',
+	'jsx!components/viewList/btnViewListSimple',
+	'jsx!components/viewList/btnViewListThumbnails',
+	'jsx!components/viewList/btnViewListBigThumbnails',
+	'jsx!components/viewList/btnViewListSmallThumbnails',],function(React,
         AnimationPanel,
         BrowserPanel,
         DisplayPanel,
         ImagePanel,
         PlayerPanel,
         QueuePanel,
-        RadioPanel) {
+        RadioPanel,
+        btnViewListSimple,
+        btnViewListThumbnails,
+        btnViewListBigThumbnails,
+        btnViewListSmallThumbnails) {
 
 /*
 <DisplayPanel data = {_.display} />
@@ -33,6 +41,10 @@ var RemotePanel = React.createClass({
 			      <ImagePanel data = {_.image} />
 			      <BrowserPanel data = {_.browser} />
 						<PlayerPanel data = {_.player} />
+						<btnViewListSimple />
+						<btnViewListSmallThumbnails />
+						<btnViewListBigThumbnails />
+						<btnViewListThumbnails/>
 	   			</div>
 	   			</div>
 	   		</div>

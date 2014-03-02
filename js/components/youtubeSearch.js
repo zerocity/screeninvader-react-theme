@@ -1,27 +1,46 @@
 /** @jsx React.DOM */
 
 define(['react',
-	'jsx!components/items'], function(React,MediaItem) {
+	'jsx!components/viewList/ViewListSimple',
+	'jsx!components/viewList/ViewListSmallThumbnails',
+	'jsx!components/viewList/ViewListBigThumbnails',
+	'jsx!components/viewList/ViewListThumbnails',
+	'store'], function(React,
+		ViewListSimple,
+		ViewListSmallThumbnails,
+		ViewListBigThumbnails,
+		ViewListThumbnails,store) {
 
 var QueryResults = React.createClass({
   render: function(){
     var data = this.props.data
     if (typeof data !== 'undefined') {
-    var mediaItems = data.map(function (item, index){
-    return (<MediaItem
-          	type={'search'}
-            isPlaying='no'
-            key={index}
-            source={item.source}
-            title={item.title} />)
+
+      var mediaItems = data.map(function (item, index){
+				switch (parseInt(store.get('preference').viewType)){
+					case 0:
+						return (<ViewListSimple type={'search'}
+							key={index} source={item.source} title={item.title} />)
+					case 1:
+						return (<ViewListSmallThumbnails type={'search'}
+							key={index} source={item.source} title={item.title} />)
+					case 2:
+						return (<ViewListBigThumbnails type={'search'}
+							key={index} source={item.source} title={item.title} />)
+					case 3:
+						return (<ViewListThumbnails type={'search'}
+							key={index} source={item.source} title={item.title} />)
+				}
       });
 
     	if (mediaItems.length == 0) {
     		var items = (<div><p>no search results </p></div>);
     	}else{
-    		var items =(<div className="box" > <div className="playlist"> {mediaItems} </div> </div>);
+    		var items =(<div className="box" > {mediaItems} </div>);
     	}
+
       return (<div> {items} </div>);
+
     }else{
       return (<p>loading</p>);
     }
@@ -63,7 +82,6 @@ var YoutubeSearch = React.createClass({
   render: function () {
     var data = this.state.data
     return (
-
         <div className="box">
          <div className="input-group">
           <input type="text" className="form-control" id="youtubeQuery"></input>
@@ -71,7 +89,9 @@ var YoutubeSearch = React.createClass({
           <button className="btn btn-default" onClick={this.clickHandler} type="button" id="youtubeSearch">Go!</button>
           </span>
         </div>
-          <QueryResults data={data} />
+
+        <QueryResults data={data} />
+
       </div>);
   }
 });

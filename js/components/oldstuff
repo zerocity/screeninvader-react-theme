@@ -60,3 +60,39 @@
 				    </div>
 				</div></div>);
     }*/
+
+    if (this.props.type == "search") {
+      return  (
+        <div className={this.props.isPlaying  + " row items"}>
+          <div className="col-xs-10 col-md-11">
+            <span className="playMe">{thumbnail} { this.props.key} - { this.props.title}</span>
+          </div>
+          <div className="col-xs-2 col-md-1">
+              <a href="#" onClick={ this.addItem } ><span className="glyphicon glyphicon-plus"></span> </a>
+          </div>
+        </div>
+        );
+    }
+
+
+    if (this.props.type == "playlist"){
+      return  (
+        <div className={this.props.isPlaying  + " row items"}>
+        	<div className="col-xs-2 col-md-1">
+						{thumbnail}
+        	</div>
+          <div className="col-xs-8 col-md-10">
+            <p className="playMe title" onClick={ this.handleClick }> { this.props.key} - { this.props.title}</p>
+          </div>
+          <div className="col-xs-2 col-md-1 control">
+              <a href="#" onClick={ this.removeItem } ><span className="glyphicon glyphicon-trash"></span> </a>
+              <a href="#" onClick={ this.toggleButton } >url</a>
+          </div>
+          <input type="text"
+              id={this.props.key + '_toggleButton' }
+              defaultValue={this.props.source}
+              className="hide form-control">
+          </input>
+        </div>
+        );
+    }

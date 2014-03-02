@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-
+/* unused */
 define(['react',
 	'store',
 	], function(React,store) {

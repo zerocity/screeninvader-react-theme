@@ -12,11 +12,13 @@ var UrlSearch = React.createClass({
   },
   render: function () {
     return (
+    	<div className="box">
         <div className="input-group">
           <input type="text" className="form-control" id="urlSearch"></input>
           <span className="input-group-btn">
           <button className="btn btn-default" onClick={this.clickHandler} type="button">Go!</button>
           </span>
+      	</div>
       </div>);
   }
 });

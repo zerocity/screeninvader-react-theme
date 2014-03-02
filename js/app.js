@@ -6,7 +6,6 @@ define(['react',
 				'jsx!components/youtubeSearch',
 				'jsx!components/urlSearch',
 				'jsx!components/items',
-				'jsx!components/viewSwitcher',
 				'jsx!components/playlist',
 				'store',
 				'jsx!routerMixin',
@@ -19,7 +18,6 @@ define(['react',
 									searchComponent,
 									urlSearch,
 									MediaItem,
-									viewSwitcher,
 									Playlist,
 									store,
 									RouterMixin,
@@ -71,17 +69,6 @@ var Screeninvader = React.createClass({
             alert('Local storage is not supported by your browser. Please disabled "Private Mode", or upgrade to a modern browser');
             return
         }
-    // Set init local storage
-    if (typeof store.get('preference') === 'undefined') {
-    	console.log('init personal Preferences');
-	    store.set('preference', {
-	     viewType: '0',
-	     name: 'anno'
-	   	});
-    }
-
-
-   // Set state for react
     return {data: []};
   },
   handle : function() {
@@ -112,9 +99,8 @@ var Screeninvader = React.createClass({
     return (
       <div className={className}>
       	<videoController data={_}/>
-      	<viewSwitcher />
-	      <Playlist data={_.playlist} />
 	      <RemotePanel data={_}/>
+	      <Playlist data={_.playlist} />
       </div>
     );
   }
@@ -130,7 +116,7 @@ var InterfaceComponent = React.createClass({
           		<Menu/>
               <YoutubeSearch router={router} />
               <UrlSearch router={router} />
-              <Screeninvader url="/cgi-bin/get?/." pollInterval={500} router={router}/>
+              <Screeninvader url="/cgi-bin/get?/." pollInterval={800} router={router}/>
             </div>);}
 });
 
