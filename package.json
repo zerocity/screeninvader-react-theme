@@ -1,0 +1,30 @@
+{
+  "name": "screeninvader-theme",
+  "version": "0.0.0",
+  "description": "screeninvader-theme ===================",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "envify": "~1.2.1",
+    "gulp": "~3.5.6",
+    "gulp-bundle": "~0.2.3",
+    "gulp-livereload": "~1.2.0",
+    "gulp-stylus": "~0.1.0",
+    "gulp-util": "~2.2.14",
+    "gulp-watch": "~0.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "gulp ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerocity/screeninvader-theme.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zerocity/screeninvader-theme/issues"
+  },
+  "homepage": "https://github.com/zerocity/screeninvader-theme"
+}
