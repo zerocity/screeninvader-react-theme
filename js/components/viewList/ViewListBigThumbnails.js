@@ -12,15 +12,15 @@ var defaultName = React.createClass({
 
      if (this.props.type == "playlist") {
 			    return (<div className="row" >
-			    	<div className="col-xs-3">
+			    	<div className="col-xs-3 col-md-1">
 			    		<YoutubeThumbnail size="64" youtubeUrl={this.props.source} />
 			    	</div>
-			    	<div className="col-xs-7">
+			    	<div className="col-xs-7 col-md-10">
 							<p className={"playMe title " + this.props.isPlaying} onClick={ this.handleClick } title="play">
 							 { this.props.key}   { this.props.title}
 							</p>
 						</div>
-						<div className="col-xs-2">
+						<div className="col-xs-2 col-md-1">
               	<a href="#" onClick={ this.removeItem } ><span className="glyphicon glyphicon-trash"></span> </a>
               	<a href="#" onClick={ this.toggleButton } >url</a>
 						</div>

@@ -6,8 +6,7 @@ define(['react'], function(React) {
 			$.get('http://10.20.30.90/slackomatic/rooms/lounge/power/off');
 		},
 		render: function() {
-			var _ = this.props.data;
-			return (<span onClick={this.clickHandler} >Power Off</span>);
+			return (<span className="glyphicon glyphicon-off" onClick={this.clickHandler} >Power Off </span>);
 		}
 	});
 	return Button;

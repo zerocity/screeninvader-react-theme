@@ -7,6 +7,7 @@ define(['react',
 				'jsx!components/urlSearch',
 				'jsx!components/items',
 				'jsx!components/playlist',
+				'jsx!components/panels/slackomatic/slackomaticPanel',
 				'store',
 				'jsx!routerMixin',
 				'jsx!menu',
@@ -19,6 +20,7 @@ define(['react',
 									urlSearch,
 									MediaItem,
 									Playlist,
+									slackomaticPanel,
 									store,
 									RouterMixin,
 									Menu,
@@ -96,6 +98,7 @@ var Screeninvader = React.createClass({
       className = "show";
     }
 
+	      //<slackomaticPanel />
     return (
       <div className={className}>
       	<videoController data={_}/>

@@ -23,16 +23,16 @@ define(['react',
 		var SlackomaticPanel = React.createClass({
 			render: function() {
 			var _ = this.props.data; // all data
-			return (<div className="center-block">
-					<MasterPowerOn data = {_} />
-					<MasterPowerOff data = {_} />
-					<ProjectorBlank data = {_} />
-					<ProjectorUnblank data = {_} />
-					<UseScreenInvader data = {_} />
-					<UsePS2 data = {_} />
-					<UsePS3 data = {_} />
-					<UseWii data = {_} />
-					<UseOwnHDMI data = {_} />
+			return (<div className="box">
+					<MasterPowerOn />
+					<MasterPowerOff />
+					<ProjectorBlank />
+					<ProjectorUnblank />
+					<UseScreenInvader />
+					<UsePS2 />
+					<UsePS3 />
+					<UseWii />
+					<UseOwnHDMI />
 				</div>
 				);
 			}

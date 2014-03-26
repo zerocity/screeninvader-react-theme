@@ -7,7 +7,7 @@ define(['react'], function(React) {
 		},
 		render: function() {
 			var _ = this.props.data;
-			return (<span onClick={this.clickHandler} >PS2</span>);
+			return (<span onClick={this.clickHandler} >PS2 </span>);
 		}
 	});
 	return Button;

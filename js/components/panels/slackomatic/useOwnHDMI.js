@@ -6,8 +6,7 @@ define(['react'], function(React) {
 			$.get('http://10.20.30.90/slackomatic/rooms/lounge/use/own_hdmi');
 		},
 		render: function() {
-			var _ = this.props.data;
-			return (<span onClick={this.clickHandler} >My own HDMI</span>);
+			return (<span onClick={this.clickHandler} >My own HDMI </span>);
 		}
 	});
 	return Button;

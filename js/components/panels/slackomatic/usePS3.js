@@ -6,8 +6,7 @@ define(['react'], function(React) {
 			$.get('http://10.20.30.90/slackomatic/rooms/lounge/use/ps3');
 		},
 		render: function() {
-			var _ = this.props.data;
-			return (<span onClick={this.clickHandler} >PS3</span>);
+			return (<span onClick={this.clickHandler} >PS3 </span>);
 		}
 	});
 	return Button;
